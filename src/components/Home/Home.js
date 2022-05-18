@@ -16,7 +16,7 @@ const Home = () => {
 
     //display all data on UI
     useEffect(() => {
-        const url = `http://localhost:5000/tasks`;
+        const url = `https://stark-river-87829.herokuapp.com/tasks`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -30,7 +30,7 @@ const Home = () => {
         const name = nameRef.current.value;
         const description = descriptionRef.current.value;
 
-        fetch('http://localhost:5000/tasks', {
+        fetch('https://stark-river-87829.herokuapp.com/tasks', {
             method: 'POST',
             body: JSON.stringify({
                 name, description
@@ -53,7 +53,7 @@ const Home = () => {
     const handleDelete = id => {
         const proceed = window.confirm("Are you sure to delete ? ");
         if (proceed) {
-            const url = `http://localhost:5000/task/${id}`;
+            const url = `https://stark-river-87829.herokuapp.com/task/${id}`;
             fetch(url, {
                 method: "DELETE"
             })

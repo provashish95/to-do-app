@@ -14,7 +14,7 @@ const SocialLogin = () => {
 
     useEffect(() => {
         if (user) {
-            const url = `http://localhost:5000/login`;
+            const url = `https://stark-river-87829.herokuapp.com/login`;
             fetch(url, {
                 method: 'POST',
                 body: JSON.stringify({
