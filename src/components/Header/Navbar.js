@@ -26,7 +26,7 @@ const Navbar = () => {
                                 Sign out
                             </Link>
                             :
-                            ' '
+                            ''
                     }
                 </div>
             </div>

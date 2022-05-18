@@ -15,6 +15,7 @@ const SocialLogin = () => {
     useEffect(() => {
         if (user) {
             navigate(from, { replace: true })
+            navigate('/home')
         }
     }, [user, navigate, from])
 
