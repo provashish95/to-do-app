@@ -1,21 +1,15 @@
-# Books Warehouse 
-This is simple books warehouse website here login user can add or delete data from this website and can edit quantity of product. and without login user only show home page and delete any item from manage inventories section. And also have stationary section user can easly add stationary product dynamically and this website's all data is dynamic . here i use heroku and node js and express technology for developing purpose, thanks . 
+# TO-DO APP 
 
-## Live Project Link [https://books-warehouse-caee5.web.app/](https://books-warehouse-caee5.web.app/).
-
-
-## Private client side  GitHub Link [https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-provashish95](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-provashish95)
+## Live Project Link [https://todo-app-71d8a.web.app/](https://todo-app-71d8a.web.app/).
 
 
-## Private server side  GitHub Link [https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-provashish95](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-provashish95)
+## Client side  GitHub Link [https://github.com/provashish95/to-do-app](https://github.com/provashish95/to-do-app)
 
 
-## Stack over flow answer Link [https://stackoverflow.com/questions/72151977/update-one-property-in-mongodb-and-update-ui-without-refresh-the-page/72152283#72152283](https://stackoverflow.com/questions/72151977/update-one-property-in-mongodb-and-update-ui-without-refresh-the-page/72152283#72152283)
+## Server side  GitHub Link [https://github.com/provashish95/to-do-app-server](https://github.com/provashish95/to-do-app-server)
 
 
-##  Stack over flow question Link [https://stackoverflow.com/questions/72152564/trying-to-add-style-on-react-toastify](https://stackoverflow.com/questions/72152564/trying-to-add-style-on-react-toastify)
-
-## Project Fetures
+## Project Features
 
 * Have Authentication system without login or registration you can not do anything
 * Add any task you want 
