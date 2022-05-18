@@ -6,6 +6,8 @@ import Login from './components/Login/Login';
 import Register from './components/Login/Register';
 import Home from './components/Home/Home';
 import RequireAuth from './components/Home/RequireAuth';
+import NotFound from './components/Home/NotFound';
+import Footer from './components/Home/Footer';
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
             <Home></Home>
           </RequireAuth>
         }></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

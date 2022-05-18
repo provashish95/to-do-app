@@ -10,6 +10,10 @@ const Tasks = ({ task, handleDelete }) => {
         setText(!text);
         toast.success('Task Completed')
     }
+    const handleReset = () => {
+        setText(!text);
+        toast.success('Task Reset')
+    }
 
 
     return (
@@ -17,7 +21,12 @@ const Tasks = ({ task, handleDelete }) => {
             <div className="card-body text-color">
                 <h5 className="card-title">{name}</h5>
                 <p className={text ? "text-decoration-line-through " : ''} >{description.length < 70 ? description : description.slice(0, 70) + ' ...'}</p>
-                <button onClick={handleComplete} className='btn btn-sm btn-dark ms-3 '>Complete</button>
+                {
+                    text ?
+                        <button onClick={handleReset} className='btn btn-sm btn-dark ms-3 '>Reset</button>
+                        :
+                        <button onClick={handleComplete} className='btn btn-sm btn-dark ms-3 '>Complete</button>
+                }
                 <button onClick={() => handleDelete(_id)} className='btn btn-sm btn-dark ms-3'>Delete</button>
             </div>
         </div>
