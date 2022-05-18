@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
     const nameRef = useRef('');
@@ -9,14 +11,28 @@ const Home = () => {
         event.preventDefault();
         const name = nameRef.current.value;
         const description = descriptionRef.current.value;
-        console.log(name, description);
+
+        fetch('http://localhost:5000/tasks', {
+            method: 'POST',
+            body: JSON.stringify({
+                name, description
+            }),
+            headers: {
+                'Content-type': 'application/json'
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                toast.success(data.success)
+                event.target.reset()
+            });
     }
 
 
     return (
         <div className='container mt-3 '>
             <div className='w-50 mx-auto '>
-                <h4 className='text-center text-dark fw-bold mb-4'>Add Task</h4>
+                <h4 className='text-center text-dark fw-bold mb-4' style={{ textDecoration: 'line-through' }}>Add Task</h4>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Control ref={nameRef} name='name' type="text" placeholder="Enter Name" required />
@@ -29,7 +45,13 @@ const Home = () => {
                     </Button>
                 </Form>
             </div>
-        </div>
+            <ToastContainer toastStyle={{
+                backgroundColor: "rgb(216, 216, 216)",
+                marginTop: "4rem",
+                color: "black",
+                borderRadius: "20px"
+            }} />
+        </div >
     );
 };
 
