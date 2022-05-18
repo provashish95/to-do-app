@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Login = () => {
                 <p>Forget Password?<span className='btn text-dark fst-italic fw-bold'>Reset Password</span></p>
 
                 <p>New to gym master?<span className='btn text-dark fst-italic fw-bold' onClick={() => navigate('/register')} >Please Register </span></p>
-                {/* <SocialLogin></SocialLogin> */}
+                <SocialLogin></SocialLogin>
             </div>
 
         </div >
