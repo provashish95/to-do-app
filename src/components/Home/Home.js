@@ -1,11 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import auth from '../../firebase.init';
 import Tasks from './Tasks';
 
 const Home = () => {
     const [tasks, setTasks] = useState();
+    const [user] = useAuthState(auth);
     const [isReload, setIsReload] = useState(false);
     const nameRef = useRef('');
     const descriptionRef = useRef('');
@@ -33,6 +36,7 @@ const Home = () => {
                 name, description
             }),
             headers: {
+                'authorization': `${user.email} ${localStorage.getItem("accessToken")}`,
                 'Content-type': 'application/json'
             },
         })
@@ -57,7 +61,7 @@ const Home = () => {
                 .then(data => {
                     const remaining = tasks?.filter(task => task._id !== id);
                     setTasks(remaining);
-                    toast.success(data.success)
+                    toast.error(data.success)
                 })
         }
     }
@@ -66,7 +70,7 @@ const Home = () => {
         <>
             <div className='container mt-3 '>
                 <div className='w-50 mx-auto '>
-                    <h4 className='text-center text-dark fw-bold mb-4' style={{ textDecoration: 'line-through' }}>Add Task</h4>
+                    <h5 className='text-center text-dark fw-bold mb-4'>Add Task</h5>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Control ref={nameRef} name='name' type="text" placeholder="Enter Name" required />
@@ -75,7 +79,7 @@ const Home = () => {
                             <Form.Control ref={descriptionRef} as="textarea" rows={3} placeholder="Description" required />
                         </Form.Group>
                         <Button className='w-50 mx-auto d-block mb-2' variant="dark" type="submit">
-                            Add task
+                            Add Task
                         </Button>
                     </Form>
                 </div>
@@ -87,7 +91,7 @@ const Home = () => {
                 }} />
             </div >
             <div className='container '>
-                <h4 className='text-center my-5 text-color'>BOOKS </h4>
+                <h4 className='text-center mt-5 mb-3 text-color'>All Tasks </h4>
                 <div className="row">
                     {
                         tasks?.map(task => <Tasks key={task._id} task={task} handleDelete={handleDelete}></Tasks>)

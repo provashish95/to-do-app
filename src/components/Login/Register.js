@@ -23,9 +23,23 @@ const Register = () => {
 
     useEffect(() => {
         if (user) {
-            navigate('/home');
+            const url = `http://localhost:5000/login`;
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: user.user.email
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    localStorage.setItem('accessToken', data.token);
+                    navigate('/home')
+                });
         }
-    }, [user, navigate])
+    }, [user, navigate]);
 
     if (error) {
         errorElement = <p className='text-danger '>Error: {error?.message}</p>
