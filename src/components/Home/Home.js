@@ -10,6 +10,8 @@ const Home = () => {
     const nameRef = useRef('');
     const descriptionRef = useRef('');
 
+
+    //display all data on UI
     useEffect(() => {
         const url = `http://localhost:5000/tasks`;
         fetch(url)
@@ -19,8 +21,7 @@ const Home = () => {
             })
     }, [isReload])
 
-    console.log(tasks);
-
+    //insert data in database
     const handleSubmit = (event) => {
         event.preventDefault();
         const name = nameRef.current.value;
@@ -40,8 +41,25 @@ const Home = () => {
                 toast.success(data.success)
                 event.target.reset()
                 setIsReload(!isReload);
-
             });
+    }
+
+
+    //delete data by id from UI and database
+    const handleDelete = id => {
+        const proceed = window.confirm("Are you sure to delete ? ");
+        if (proceed) {
+            const url = `http://localhost:5000/task/${id}`;
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = tasks?.filter(task => task._id !== id);
+                    setTasks(remaining);
+                    toast.success(data.success)
+                })
+        }
     }
 
     return (
@@ -72,7 +90,7 @@ const Home = () => {
                 <h4 className='text-center my-5 text-color'>BOOKS </h4>
                 <div className="row">
                     {
-                        tasks?.map(task => <Tasks key={task._id} task={task} ></Tasks>)
+                        tasks?.map(task => <Tasks key={task._id} task={task} handleDelete={handleDelete}></Tasks>)
                     }
                 </div>
             </div>
