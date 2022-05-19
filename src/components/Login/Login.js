@@ -90,7 +90,7 @@ const Login = () => {
                 }
                 <p>Forget Password?<span className='btn text-dark fst-italic fw-bold' onClick={resetPassword}>Reset Password</span></p>
 
-                <p>New to gym master?<span className='btn text-dark fst-italic fw-bold' onClick={() => navigate('/register')} >Please Register </span></p>
+                <p>New to To-do app?<span className='btn text-dark fst-italic fw-bold' onClick={() => navigate('/register')} >Please Register </span></p>
                 <SocialLogin></SocialLogin>
                 <ToastContainer toastStyle={{
                     backgroundColor: "rgb(216, 216, 216)",
